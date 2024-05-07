@@ -85,18 +85,14 @@ fun SearchedCommunities(
     communities.forEach{
         Community(
             text = it,
-            modifier = modifier
-        ) {
-            viewModel?.selectedCommunity?.postValue(it)
-            RedditRouter.goBack()
-        }
+            modifier = modifier,
+            onCommunityClicked = {
+                viewModel?.selectedCommunity?.postValue(it)
+                RedditRouter.goBack()
+            }
+        )
 
     }
-}
-
-@Composable
-fun Community(text: String, modifier: Modifier, onCommunityClicked: () -> Unit) {
-
 }
 
 @Composable
